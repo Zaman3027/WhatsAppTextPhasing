@@ -42,8 +42,15 @@ public class Main {
                 date = date.split(",")[0].replace("[", "");
                 time = time.split(",")[1];
                 name = line.split("]")[1].split(":")[0];
-                message = line.split("]")[1].split(":")[1];
-                System.out.println("Date: " + date + " Time:" + time + " Name: " + name + " Message: " + message);
+                message = line.split(":")[2];
+                int n =0;
+                if ((n= line.split(":").length)>3){
+                    //System.out.println("Length: "+n);
+                    for (int i = 3; i<n; i++){
+                        message = message +":"+ line.split(":")[i];
+                    }
+                }
+                System.out.println("Date: "+date + " Time:" + time + " Name:"+name + " Message:" + message);
             }
 
         } catch (FileNotFoundException e) {
@@ -64,9 +71,14 @@ public class Main {
                 String date = line.split(",")[0];
                 String time = line.split(",")[1].split("-")[0];
                 String name = line.split(",")[1].split("-")[1].split(":")[0];
-                String message = line.split(",")[1].split("-")[1].split(":")[1];
-
-                //System.out.println(line.split(",")[1].split("-")[1].split(":").length);
+                String message = line.split(":")[2];
+                int n;
+                if ((n= line.split(":").length)>3){
+                    //System.out.println("Length: "+n);
+                    for (int i = 3; i<n; i++){
+                        message = message +":"+ line.split(":")[i];
+                    }
+                }
                 System.out.println("Date: "+date + " Time:" + time + " Name:"+name + " Message:" + message);
             }
         } catch (FileNotFoundException e) {
